@@ -62,8 +62,8 @@ BCMMarker.prototype.draw = function(){
 
 	if(position){
 
-		div.style.left = position.x + 'px';
-		div.style.top = position.y + 'px';
+		div.style.left = (position.x - this.offsetWidth ) + 'px';
+		div.style.top = (position.y - this.offsetHeight) + 'px';
 
 	}
 	

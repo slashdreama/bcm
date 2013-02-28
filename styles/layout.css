@@ -1,8 +1,6 @@
 html { height: 100% }
 body { height: 100%; margin: 0; padding: 0 }
 
-
-#myMap { height: 100% }
 div#map{
 	position: absolute;
 	top: 0;
@@ -10,3 +8,17 @@ div#map{
 	width: 100%;
 	height: 100%;
 }
+
+.contextualMenu{
+    visibility:hidden;
+    background:#ffffff;
+    border:1px solid #8888FF;
+    z-index: 10;  
+    position: relative;
+    width: 140px;
+
+
+}
+	.contextualMenu a div{
+    	padding: 3px 0 3px 10px;
+    }

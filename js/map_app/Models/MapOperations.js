@@ -21,9 +21,10 @@ function createMap(){
 
 	//Click droit sur la carte
 	// cette sera effectue quand on voudra personnalisé notre menu contextuelle
-	google.maps.event.addListener(map, 'rightclick', function(){ 
-		console.log('right click'); 
-		//setContextualMenu();
+	google.maps.event.addListener(map, "rightclick", function(event){ 
+		console.log('rigth click : ' + event.latLng.lat()+ '/' + event.latLng.lng());
+		setContextualMenu(event.latLng);
+
 	});
 
 }
