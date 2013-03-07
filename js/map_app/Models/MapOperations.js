@@ -6,9 +6,9 @@ function createMap(){
 	var mapcenter = new google.maps.LatLng(0,0);
 
 	var mapOptions = {
-		zoom : 15,
+		zoom : 17,
 		center : mapcenter,
-		mapTypeId : google.maps.MapTypeId.ROADMAP 
+		mapTypeId : google.maps.MapTypeId.HYBRID 
 
 	}
 
@@ -18,13 +18,32 @@ function createMap(){
 	/**
 	*Listeners on map
 	*/
+	google.maps.event.addListener(map, "click", function(event){ 
+		//Efface le menu contextuelle, après animation fade out
+		removeContextualMenu()
+	});
+
+	google.maps.event.addListener(map, "dragstart", function(event){ 
+		//Efface le menu contextuelle, après animation fade out
+		removeContextualMenu()
+		//console.log('drag  start');
+	});
+
+	google.maps.event.addListener(map, "mousemove", function(event){ 
+		//console.log(event.latLng.lat()+'/'+event.latLng.lng());
+		/*
+			on prévoit d'afficher le nom de la communue comme tile de la souris de sorte qu'on
+			Donc quand on baladera la souris sur la carte on puisse savoir le nom de commune directement à n'importe quelle positon
+		*/
+	});
+
 
 	//Click droit sur la carte
 	// cette sera effectue quand on voudra personnalisé notre menu contextuelle
 	google.maps.event.addListener(map, "rightclick", function(event){ 
 		console.log('rigth click : ' + event.latLng.lat()+ '/' + event.latLng.lng());
 		setContextualMenu(event.latLng);
-
+		contextualMenuEvtPosition = event.latLng;
 	});
 
 }
@@ -42,12 +61,16 @@ function AutoGeolocation(){
 	  success: function(position) {
 	  	l = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 	  	//console.log(position.coords.latitude+'/'+position.coords.longitude);
+
 	    map.panTo(l);
 	    BCMUserDefaultLocation = l;
+
+	    putUserMarker({});
+
 	    console.log(l);
 	    //Demand to put this new position as BCMUserdefautLocation;
 	    //If user do that, 
-	    setUserDefaultLocation(BCMUserDefaultLocation);
+	    //setUserRegistredLocation(BCMUserDefaultLocation);
 
 	  },
 
@@ -137,3 +160,10 @@ function mapType(name){
 /**
 * ADD MARKER 
 */
+
+function putUserMarker(data){
+	console.log('Put User Marker');
+	//var data = {};
+	var meMarker = new BCMMarker("user", map, BCMUserDefaultLocation, data);
+	meMarkerArray[0] = meMarker;
+}

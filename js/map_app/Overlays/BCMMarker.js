@@ -9,8 +9,8 @@ function BCMMarker(kind, markerMap, latLng, data){
 	this.width_ = 25;
 	this.height_ = 25;
 	this.data_ = data;
-	this.offsetWidth = 12;
-	this.offsetHeight = 12;
+	this.offsetWidth = 13;
+	this.offsetHeight = 13;
 	this.image_ = '../images/'+ kind +'_marker.png';
 	this.setMap(markerMap); 
 	
@@ -74,5 +74,6 @@ BCMMarker.prototype.draw = function(){
 //REMOVE
 BCMMarker.prototype.remove = function(){
 	console.log('marker remove');
-	this.div_.parentNode.remove(this.div_);
+	this.div_.parentNode.removeChild(this.div_);
+	meMarkerArray[0] = null;
 };

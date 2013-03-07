@@ -9,7 +9,8 @@ console.log('AppController.js');
 //VARIABLES D'INITIATION
 var map;
 var BCMUserDefaultLocation;
-var mapArray;
+var meMarkerArray = [];
+var contextualMenuEvtPosition
 
 
 function initApp(){
@@ -26,15 +27,19 @@ function initApp(){
 			main();
 			createMap();
 
-
 			//verify if BCMUserDefaultLocation is definied
-			if(window.localStorage['BCMUserDefaultLat'] && window.localStorage['BCMUserDefaultLng']){
+			if(window.localStorage['BCMUserRegistredLat'] && window.localStorage['BCMUserRegistredLng']){
 				console.log('A default postion existe');
-				BCMUserDefaultLocation = getUserDefaultLocation();
+				BCMUserDefaultLocation = getUserRegistredLocation();
 				map.panTo(BCMUserDefaultLocation);
 
+				putUserMarker({});
+
+				/*
 				var data = {};
 				var meMarker = new BCMMarker("user", map, BCMUserDefaultLocation, data);
+				meMarkerArray.push(meMarker);
+				*/
 
 			}else{
 				AutoGeolocation();

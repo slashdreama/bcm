@@ -2,30 +2,38 @@
 /*		ALL ACTIONS TO STORE DATA OR INFORMATIONS LOCALY  */
 /**********************************************************/
 
-function setUserDefaultLocation(latLng){
+function saveUserRegistredLocation(){
+
+	console.log('save');
+	latLng = BCMUserDefaultLocation;
+	
 	if(window.localStorage){
 		console.log('LocalStorage is possible');
 	}
 
-	if(localStorage.length > 0 && window.localStorage['BCMUserDefaultLocation']){
-		removeUserDefaultLocation();
+	if(localStorage.length > 0 && window.localStorage['BCMUserRegistredLat'] && window.localStorage['BCMUserRegistredLng']){
+		removeUserRegistredLocation();
 	}
 
-	window.localStorage['BCMUserDefaultLat'] = latLng.lat();
-	window.localStorage['BCMUserDefaultLng'] = latLng.lng();
+	//BCMUserDefaultLocation = l
+
+
+	window.localStorage['BCMUserRegistredLat'] = latLng.lat();
+	window.localStorage['BCMUserRegistredLng'] = latLng.lng();
 
 
 }
 
-function getUserDefaultLocation(){
-	var lat = Number(window.localStorage['BCMUserDefaultLat']) ;
-	var lng = Number(window.localStorage['BCMUserDefaultLng']) ;
+function getUserRegistredLocation(){
+	var lat = Number(window.localStorage['BCMUserRegistredLat']) ;
+	var lng = Number(window.localStorage['BCMUserRegistredLng']) ;
 	var latLng = new google.maps.LatLng(lat, lng);
 	return latLng;
 }
 
-function removeUserDefaultLocation(){
-	window.localStorage.removeItem('BCMUserDefaultLocation');
+function removeUserRegistredLocation(){
+	window.localStorage.removeItem('BCMUserRegistredLat');
+	window.localStorage.removeItem('BCMUserRegistredLng');
 }
 
 

@@ -21,4 +21,6 @@ div#map{
 }
 	.contextualMenu a div{
     	padding: 3px 0 3px 10px;
+        font-size: 12px;
+       
     }
