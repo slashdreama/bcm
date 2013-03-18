@@ -10,10 +10,10 @@ console.log('AppController.js');
 var map;
 var BCMUserDefaultLocation;
 var meMarkerArray = [];
-var contextualMenuEvtPosition
+var contextualMenuEvtPosition;
 
 
-function initApp(){
+function initApp() {
 	console.log('initialisation de l\'application');
 
 

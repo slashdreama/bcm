@@ -75,5 +75,8 @@ BCMMarker.prototype.draw = function(){
 BCMMarker.prototype.remove = function(){
 	console.log('marker remove');
 	this.div_.parentNode.removeChild(this.div_);
-	meMarkerArray[0] = null;
-};
+
+	if(this.kind_ == "user"){
+		meMarkerArray[0] = null;
+	}
+	

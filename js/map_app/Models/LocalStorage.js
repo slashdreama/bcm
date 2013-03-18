@@ -20,7 +20,7 @@ function saveUserRegistredLocation(){
 
 	window.localStorage['BCMUserRegistredLat'] = latLng.lat();
 	window.localStorage['BCMUserRegistredLng'] = latLng.lng();
-
+	console.log(localStorage.length);
 
 }
 

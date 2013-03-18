@@ -1,16 +1,16 @@
-function createMap(){
+function createMap() {
 	
 	console.log('Creation de la map');
 
 	//var mapcenter =  new google.maps.LatLng(5.3411, -4.0281);
-	var mapcenter = new google.maps.LatLng(0,0);
+	var mapcenter = new google.maps.LatLng(0, 0);
 
 	var mapOptions = {
 		zoom : 17,
 		center : mapcenter,
-		mapTypeId : google.maps.MapTypeId.HYBRID 
+		mapTypeId : google.maps.MapTypeId.HYBRID
 
-	}
+	};
 
 	map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
@@ -40,8 +40,8 @@ function createMap(){
 
 	//Click droit sur la carte
 	// cette sera effectue quand on voudra personnalisé notre menu contextuelle
-	google.maps.event.addListener(map, "rightclick", function(event){ 
-		console.log('rigth click : ' + event.latLng.lat()+ '/' + event.latLng.lng());
+	google.maps.event.addListener(map, "rightclick", function(event) { 
+		console.log('rigth click : ' + event.latLng.lat() + '/' + event.latLng.lng());
 		setContextualMenu(event.latLng);
 		contextualMenuEvtPosition = event.latLng;
 	});
